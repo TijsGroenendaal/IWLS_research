@@ -6,6 +6,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity(name = "pp_rel_parent_single")
+@Table(name = "pp_rel_parent_single")
 data class SingleKeyParent(
         @Id
         val id: UUID,
@@ -29,6 +30,7 @@ data class SingleKeyParent(
 }
 
 @Entity(name = "pp_rel_child_single")
+@Table(name = "pp_rel_child_single")
 data class SingleKeyChild(
         @Id
         val id: UUID,

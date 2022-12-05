@@ -5,6 +5,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity(name = "pp_rel_parent_composite")
+@Table(name = "pp_rel_parent_composite")
 data class CompositeKeyParent(
         @EmbeddedId
         val compositeKey: CompositeKey,
@@ -23,6 +24,7 @@ data class CompositeKeyParent(
 }
 
 @Entity(name = "pp_rel_child_composite")
+@Table(name = "pp_rel_child_composite")
 data class CompositeKeyChild(
         @Id
         val id: UUID,

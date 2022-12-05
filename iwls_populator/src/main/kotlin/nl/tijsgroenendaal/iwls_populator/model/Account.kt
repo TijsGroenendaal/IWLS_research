@@ -3,7 +3,7 @@ package nl.tijsgroenendaal.iwls_populator.model
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
-@Entity(name = "pp_account")
+@Entity
 data class Account(
         @Id
         val memberId: Long,

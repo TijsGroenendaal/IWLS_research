@@ -2,7 +2,7 @@ package nl.tijsgroenendaal.iwls_populator.model
 
 import javax.persistence.*
 
-@Entity(name = "pp_cluster")
+@Entity
 data class Cluster(
         @Id
         val memberId: Long,

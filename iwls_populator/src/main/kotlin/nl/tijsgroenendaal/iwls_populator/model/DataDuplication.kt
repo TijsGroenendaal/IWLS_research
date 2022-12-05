@@ -6,8 +6,10 @@ import java.util.UUID
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.ManyToOne
+import javax.persistence.Table
 
 @Entity(name = "pp_dup_single")
+@Table(name = "pp_dup_single")
 data class DataDuplication(
         @Id
         val id: UUID,
