@@ -16,7 +16,8 @@ class PopulatorController(
         private val clusterRepository: ClusterRepository,
         private val dataDuplicationRepository: DataDuplicationRepository,
         private val compositeKeyRepository: CompositeKeyRepository,
-        private val singleKeyRepository: SingleKeyRepository
+        private val singleKeyRepository: SingleKeyRepository,
+        private val dataDuplicationExtraRepository: DataDuplicationExtraRepository
 ) {
 
     @PostMapping("data-duplication/single-key")
@@ -41,6 +42,31 @@ class PopulatorController(
                             }
 
                             dataDuplicationRepository.saveAllAndFlush(collection)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @PostMapping("data-duplication/extra")
+    suspend fun populateDataDuplicationExtra(@RequestParam clusters: Int, @RequestParam accounts: Int, @RequestParam properties: Int, @RequestParam chunks: Int) {
+        val first = LocalDate.of(2022, 1, 1)
+        for (clus in 1 until clusters + 1) {
+            coroutineScope {
+                (0).until(accounts).chunked(10).forEach { accChunk ->
+                    accChunk.forEach {
+                        launch {
+                            val collection = LinkedList<DataDuplicationExtra>()
+                            for (chunk in 0 until chunks) {
+                                val chunkStart = first.plusDays((chunk * 7).toLong())
+                                val chunkEnd = first.plusDays(((chunk + 1) * 7).toLong())
+                                for (prop in 0 until properties) {
+                                    collection.add(DataDuplicationExtra(UUID.randomUUID(),  (clus * 100000).toLong() + it, clus.toLong(),  chunkStart, chunkEnd, "property$prop", Random.nextFloat()))
+                                }
+                            }
+
+                            dataDuplicationExtraRepository.saveAllAndFlush(collection)
                         }
                     }
                 }

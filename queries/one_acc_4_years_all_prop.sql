@@ -65,3 +65,23 @@ WHERE
         dup.start_date > '2021-12-31' AND
         dup.end_date < '2026-01-01'
 ORDER BY dup.start_date, account.member_id;
+
+-- Stop
+
+SELECT A;
+
+-- Data Duplication Extra
+
+EXPLAIN (ANALYZE ON, BUFFERS ON, TIMING ON) SELECT
+    dup.cluster_member_id AS cluster_member_id,
+    dup.account_member_id AS account_member_id,
+    dup.start_date,
+    dup.end_date,
+    dup.property,
+    dup.percentage
+FROM pp_dup_extra AS dup
+WHERE
+        dup.account_member_id = 200001 AND
+        dup.start_date > '2021-12-31' AND
+        dup.end_date < '2026-01-01'
+ORDER BY dup.start_date, dup.account_member_id;
