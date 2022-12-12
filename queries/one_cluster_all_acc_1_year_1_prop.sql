@@ -4,7 +4,9 @@ SELECT A;
 
 -- Relation Single Key
 
-EXPLAIN (ANALYZE ON, BUFFERS ON, TIMING ON) SELECT
+SET enable_seqscan = OFF;
+DISCARD ALL;
+EXPLAIN (ANALYZE ON, BUFFERS ON, SETTINGS ON, WAL ON, SUMMARY ON, TIMING ON, FORMAT JSON) SELECT
     cluster.member_id AS cluster_member_id,
     account.member_id AS account_member_id,
     parent.start_date,
@@ -28,7 +30,9 @@ SELECT A;
 
 --Relation Composite Key
 
-EXPLAIN (ANALYZE ON, BUFFERS ON, TIMING ON) SELECT
+SET enable_seqscan = OFF;
+DISCARD ALL;
+EXPLAIN (ANALYZE ON, BUFFERS ON, SETTINGS ON, WAL ON, SUMMARY ON, TIMING ON, FORMAT JSON) SELECT
     cluster.member_id AS cluster_member_id,
     account.member_id AS account_member_id,
     parent.start_date,
@@ -52,7 +56,9 @@ SELECT A;
 
 -- Date Duplication
 
-EXPLAIN (ANALYZE ON, BUFFERS ON, TIMING ON) SELECT
+SET enable_seqscan = OFF;
+DISCARD ALL;
+EXPLAIN (ANALYZE ON, BUFFERS ON, SETTINGS ON, WAL ON, SUMMARY ON, TIMING ON, FORMAT JSON) SELECT
     cluster.member_id AS cluster_member_id,
     account.member_id AS account_member_id,
     dup.start_date,
@@ -75,7 +81,9 @@ SELECT A;
 
 -- Data Duplication Extra
 
-EXPLAIN (ANALYZE ON, BUFFERS ON, TIMING ON) SELECT
+SET enable_seqscan = OFF;
+DISCARD ALL;
+EXPLAIN (ANALYZE ON, BUFFERS ON, SETTINGS ON, WAL ON, SUMMARY ON, TIMING ON, FORMAT JSON) SELECT
     dup.cluster_member_id AS cluster_member_id,
     dup.account_member_id AS account_member_id,
     dup.start_date,
