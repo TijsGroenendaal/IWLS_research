@@ -26,7 +26,7 @@ with open(csv_file_name, 'w') as csv_file:
                 # Load the data from the file
                 data = json.load(json_file)[0]["QUERY PLAN"][0]
 
-            data.update({"sample": iteration})
+            data.update({"sample": file_name.split("_")[1].split(".")[0]})
 
             # If this is the first file, write the headers
             if not writer.fieldnames:
