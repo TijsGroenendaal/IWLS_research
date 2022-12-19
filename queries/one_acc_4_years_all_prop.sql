@@ -4,8 +4,6 @@ SELECT A;
 
 -- Relation Single Key
 
-SET enable_seqscan = OFF;
-DISCARD ALL;
 EXPLAIN (ANALYZE ON, BUFFERS ON, SETTINGS ON, WAL ON, SUMMARY ON, TIMING ON, FORMAT JSON) SELECT
     cluster.member_id AS cluster_member_id,
     account.member_id AS account_member_id,
@@ -29,8 +27,6 @@ SELECT A;
 
 -- Relation Composite Key
 
-SET enable_seqscan = OFF;
-DISCARD ALL;
 EXPLAIN (ANALYZE ON, BUFFERS ON, SETTINGS ON, WAL ON, SUMMARY ON, TIMING ON, FORMAT JSON) SELECT
     cluster.member_id AS cluster_member_id,
     account.member_id AS account_member_id,
@@ -54,8 +50,6 @@ SELECT A;
 
 -- Data Duplication
 
-SET enable_seqscan = OFF;
-DISCARD ALL;
 EXPLAIN (ANALYZE ON, BUFFERS ON, SETTINGS ON, WAL ON, SUMMARY ON, TIMING ON, FORMAT JSON) SELECT
     cluster.member_id AS cluster_member_id,
     account.member_id AS account_member_id,
@@ -78,8 +72,6 @@ SELECT A;
 
 -- Data Duplication Extra
 
-SET enable_seqscan = OFF;
-DISCARD ALL;
 EXPLAIN (ANALYZE ON, BUFFERS ON, SETTINGS ON, WAL ON, SUMMARY ON, TIMING ON, FORMAT JSON) SELECT
     dup.cluster_member_id AS cluster_member_id,
     dup.account_member_id AS account_member_id,
