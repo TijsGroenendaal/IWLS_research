@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:15.1-alpine
+    restart: on-failure
+    environment:
+      POSTGRES_PASSWORD: tijsgr
+      POSTGRES_USER: tijs
+    ports:
+      - "5432:5432"
+    volumes:
+      - property-percentage-volume:/var/lib/postgresql/data
+
+volumes:
+  property-percentage-volume:

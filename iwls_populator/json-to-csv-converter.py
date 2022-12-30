@@ -8,8 +8,7 @@ directory = input('Enter the name of the directory containing the JSON files: ')
 # Get a list of all the JSON file names in the directory
 file_names = os.listdir(directory)
 
-# Prompt the user to enter the name of the CSV file to be created
-csv_file_name = input('Enter the name of the CSV file to be created: ')
+csv_file_name = directory + "\output.csv"
 
 # Open the CSV file for writing
 with open(csv_file_name, 'w') as csv_file:
@@ -33,7 +32,6 @@ with open(csv_file_name, 'w') as csv_file:
                 writer.fieldnames = data.keys()
                 writer.writeheader()
 
-            # Iterate over the data and write it to the CSV file, skipping the root element
             writer.writerow(data)
 
         iteration += 1
